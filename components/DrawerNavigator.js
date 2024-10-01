@@ -65,14 +65,6 @@ function DrawerNavigator() {
                     ),
                   }}  />
             <Drawer.Screen 
-                name="Reset Password" 
-                component={ResetPassword}
-                options={{
-                    drawerIcon: () => (
-                      <MaterialIcons name="password" size={22} color={'#22c55e'} />
-                    ),
-                  }}  />
-            <Drawer.Screen 
                 name="Security" 
                 component={Security}
                 options={{

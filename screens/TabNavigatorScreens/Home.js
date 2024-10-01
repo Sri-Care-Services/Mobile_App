@@ -2,89 +2,12 @@ import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+// Import packages and bills data from the packages.js file
+import { packages, bills as dummyBills } from '../../packages';
+
 const Home = ({ navigation }) => {
   const [userName, setUserName] = useState('User'); // Static user name for demonstration
-
-  // New Dummy package data (as provided)
-  const [packages, setPackages] = useState([
-    {
-      name: '📱 Social Media Unlimited',
-      description: '1 GB data for social media apps including Facebook, WhatsApp, and Instagram.',
-      price: 899,
-      validity_period: 24,
-      created_at: '2024-01-01T00:00:00Z',
-      updated_at: '2024-01-10T00:00:00Z',
-    },
-    {
-      name: '🎥 Streaming Package',
-      description: '2 GB data for streaming services including YouTube, Netflix, and Disney+.',
-      price: 1299,
-      validity_period: 24,
-      created_at: '2024-02-01T00:00:00Z',
-      updated_at: '2024-02-10T00:00:00Z',
-    },
-    {
-      name: '🎮 Gaming Package',
-      description: '3 GB data for gaming apps including PUBG, Fortnite, and Call of Duty.',
-      price: 1499,
-      validity_period: 24,
-      created_at: '2024-03-01T00:00:00Z',
-      updated_at: '2024-03-10T00:00:00Z',
-    },
-    {
-      name: '💼 Business Package',
-      description: '5 GB data for business applications like Email, Zoom, and Google Drive.',
-      price: 1999,
-      validity_period: 24,
-      created_at: '2024-04-01T00:00:00Z',
-      updated_at: '2024-04-10T00:00:00Z',
-    },
-    {
-      name: '👨‍👩‍👧‍👦 Family Package',
-      description: '4 GB data for family use, supporting apps like Facebook, WhatsApp, Instagram, and YouTube.',
-      price: 1599,
-      validity_period: 24,
-      created_at: '2024-05-01T00:00:00Z',
-      updated_at: '2024-05-10T00:00:00Z',
-    },
-    {
-      name: '🌐 Unlimited Package',
-      description: 'Unlimited data for all apps without restrictions.',
-      price: 2999,
-      validity_period: 24,
-      created_at: '2024-06-01T00:00:00Z',
-      updated_at: '2024-06-10T00:00:00Z',
-    },
-  ]);
-
-  // Dummy bill data associated with packages
-  const [bills, setBills] = useState([
-    {
-      id: 1,
-      packageId: 1,
-      name: 'Social Media Unlimited',
-      duration: 'January 2024',
-      amount: 899,
-      description: 'Usage bill for Social Media Unlimited package',
-    },
-    {
-      id: 2,
-      packageId: 2,
-      name: 'Streaming Package',
-      duration: 'February 2024',
-      amount: 1299,
-      description: 'Usage bill for Streaming Package',
-    },
-    {
-      id: 3,
-      packageId: 5,
-      name: 'Family Package',
-      duration: 'March 2024',
-      amount: 1599,
-      description: 'Usage bill for Family Package',
-    },
-  ]);
-
+  const [bills, setBills] = useState(dummyBills); // Use imported dummy bills
   const [selectedBill, setSelectedBill] = useState(null); // State for storing selected individual bill
 
   // Calculate total outstanding amount
@@ -97,17 +20,24 @@ const Home = ({ navigation }) => {
   const handlePaymentProceed = (billToPay) => {
     if (billToPay) {
       // Proceed with payment for a specific bill
-      navigation.navigate('PaymentScreen', { selectedBill: billToPay });
+      navigation.navigate('PaymentScreen', { selectedBill: billToPay, handlePayment });
     }
   };
 
   const handlePayAllBills = () => {
     // Proceed with payment for all bills
-    navigation.navigate('PaymentScreen', { totalAmount: totalOutstanding, allBills: bills });
+    navigation.navigate('PaymentScreen', { totalAmount: totalOutstanding, allBills: bills, handlePayment });
   };
 
   const handleCancelSelection = () => {
     setSelectedBill(null); // Reset the selected bill
+  };
+
+  // Callback to remove paid bills
+  const handlePayment = (paidBillIds) => {
+    // Filter out paid bills based on their IDs
+    setBills(prevBills => prevBills.filter(bill => !paidBillIds.includes(bill.id)));
+    setSelectedBill(null); // Reset the selected bill after payment
   };
 
   return (

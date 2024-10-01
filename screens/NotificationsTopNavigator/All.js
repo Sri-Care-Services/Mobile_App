@@ -3,19 +3,14 @@ import React from 'react'
 import { Iconify } from 'react-native-iconify';
 
 const AssignTasks = [
-    { message: 'Garbage truck has dispatched', time: '3m ago', id: 'Bin 04' },
-    { message: 'New dispatch notification', time: '30m ago', id: 'Bin 20' },
-    { message: 'New dispatch notification', time: '45m ago', id: 'Bin 16' },
+    { message: 'Service Activated', time: '9 days ago', id: '20' },
+    { message: 'Logged In', time: '9 days ago', id: '18' },
   ];
 
 const AssignedItem = ({ message , time }) => (
     <View className='flex-row items-center bg-[#F3F3F3] my-2 py-2.5 px-4 rounded-xl' >
-        
-        <View className='bg-[#7ED957]/20 p-2 rounded-lg' >
-          <Iconify icon="mingcute:truck-line" size={26} color="#46AA62" />
-        </View>
-
-        <Text className='flex-1 text-gray-500 text-base font-normal leading-5 ml-4 pr-3' numberOfLines={2} >{message}</Text>
+      
+        <Text className='flex-1 text-gray-500 text-base font-normal leading-5 pr-3' numberOfLines={2} >{message}</Text>
             
         <Text className='text-black text-sm font-normal ' >{time}</Text>
     </View>

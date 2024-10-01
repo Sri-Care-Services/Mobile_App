@@ -15,7 +15,7 @@ const Header = ({ navigation }) => {
         
         <Pressable onPress={() => navigation.navigate('Profile')} >
             <Image className='h-7 w-7 rounded-full'
-                source={require('../assets/png/profile_image.png')}
+                source={require('../assets/users/user-1.jpg')}
                 resizeMode="contain"
                 accessible={true}
                 accessibilityLabel={'TrashSmart Logo'}
