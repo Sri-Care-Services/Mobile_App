@@ -23,7 +23,11 @@ const SignUpEmail = ({ navigation }) => {
 
     return (
         <View className='flex-1 bg-white'>
-            <View className='items-center px-8 pt-24 mt-24'>
+            <Text className='text-4xl text-center font-bold text-green-600 mt-32'>
+                Sri Care <Text className='text-green-500' >Services</Text>
+            </Text>
+
+            <View className='items-center px-8 mt-14'>
                 <Text className='text-lg text-center font-bold'>
                     Enter your email address and password
                 </Text>

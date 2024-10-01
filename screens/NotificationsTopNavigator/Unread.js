@@ -3,11 +3,11 @@ import React from 'react'
 import { Iconify } from 'react-native-iconify';
 
 const AssignTasks = [
-    { message: 'Service Deactivated', time: '2m ago', id: '20' },
-    { message: 'Service activated', time: '2m ago', id: '16' },
-    { message: 'Bill Payed', time: '3m ago', id: '04' },
-    { message: 'Bill Payed', time: '4m ago', id: '05' },
-    { message: 'Logged In', time: '5m ago', id: '06' },
+    { message: 'Service Deactivated', time: '1m ago', id: '20' },
+    { message: 'Service activated', time: '1m ago', id: '16' },
+    { message: 'Bill Payed', time: '2m ago', id: '04' },
+    { message: 'Bill Payed', time: '2m ago', id: '05' },
+    { message: 'Logged In', time: '2m ago', id: '06' },
   ];
 
 const AssignedItem = ({ message , time }) => (
